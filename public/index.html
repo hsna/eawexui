@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="ja" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="ja" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="ja" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ja" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EA test UI</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">-->
+    <link rel="stylesheet" href="bower_components/bootswatch-dist/css/bootstrap.css"><!-- bootwatch -->
+    <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/top.css">
+    <link rel="stylesheet" href="styles/watson.css">
+    <link rel="stylesheet" href="styles/products.css">
+    <link rel="stylesheet" href="styles/item.css">
+    <link rel="stylesheet" href="styles/start.css">
+    <link href="styles/ipad-mini.css" rel="stylesheet" type="text/css" media="only screen
+ and (min-device-width: 768px)
+ and (max-device-width: 1024px)
+ and (-webkit-min-device-pixel-ratio: 2)">
+</head>
+<body>
+<div ui-view></div>
+
+<!-- bower componetns -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<!--<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>-->
+<script src="bower_components/bootswatch-dist/js/bootstrap.js"></script><!-- bootwatch -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-i18n/angular-locale_ja-jp.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.js"></script>
+<!-- bower componetns -->
+
+
+<script src="app.js"></script>
+<script src="controllers/watsonCtrl.js"></script>
+<script src="controllers/topCtrl.js"></script>
+<script src="controllers/productsCtrl.js"></script>
+<script src="controllers/itemCtrl.js"></script>
+<script src="controllers/startCtrl.js"></script>
+<script src="services/productsservice.js"></script>
+<script src="services/watsonservice.js"></script>
+<script src="services/sotaservice.js"></script>
+<script src="services/itemservice.js"></script>
+<script src="filters/sliderFilter.js"></script>
+<script src="config/appconfig.js"></script>
+<script src="config/labelconfig.js"></script>
+<script src="config/unitconfig.js"></script>
+<script src="directive/touch_hover.js"></script>
+</body>
+</html>

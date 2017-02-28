@@ -1,0 +1,29 @@
+{
+  "name": "NodejsStarterApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "basic-auth-connect": "1.0.0",
+    "body-parser": "1.15.1",
+    "bower": "1.7.9",
+    "cfenv": "1.0.x",
+    "cloudant": "1.4.1",
+    "dotenv": "^2.0.0",
+    "express": "4.13.4",
+    "express-csv": "0.6.0",
+    "nano": "*",
+    "net": "^1.0.2",
+    "uuid": "2.0.2",
+    "vcap_services": "^0.2.0",
+    "watson-developer-cloud": "^1.12.2",
+    "http-auth" : "2.4.11"
+  },
+  "repository": {},
+  "engines": {
+    "node": "4.x"
+  }
+}

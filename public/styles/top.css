@@ -1,0 +1,26 @@
+div#container div#header div#personalEc div#cartbox span.totalPrice {
+    background-image: url("/webfront/img/arrow_orange03.jpg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-top: -8px;
+    padding-right: 20px;
+    position: absolute;
+    right: 5px;
+    text-align: right;
+    top: 50%;
+}
+
+div#glnav.glnavTop{
+    background: rgba(0, 0, 0, 0) url("/images/glmenu_blue.jpg") repeat-x scroll left top;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+div#glnav.glnavCover ul li {
+    height: 38px;
+}
+div#glnav ul li {
+    float: left;
+    height: 38px;
+}

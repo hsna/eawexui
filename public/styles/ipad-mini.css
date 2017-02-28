@@ -1,0 +1,38 @@
+/*htmlからの読み込み時に iPad 3, 4, iPad Air, iPad mini Retina　を対象*/
+.smallFont{
+    font-size:16px!important;
+}
+
+.middleFont{
+    font-size:20px!important;
+}
+
+.largeFont{
+    font-size:24px!important;
+}
+
+#slider_area{
+    margin-left:-375px!important;
+}
+
+.item_points{
+    margin-top:65px!important;
+}
+
+#show_date_picker_area{
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+#show_time_select_area{
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+#watson-icon:hover .arrow_box {
+    opacity: 0;
+}
+
+.touch {
+    opacity: 1!important;
+}

@@ -1,0 +1,13 @@
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  domain: mybluemix.net
+  name: cogcommerce-cnvs-dev2
+  host: cogcommerce-cnvs-dev2
+  disk_quota: 1024M
+  services:
+  - Conversation-t2
+  env:
+    WORKSPACE_ID: 1cee488b-3326-48fd-96cf-e1cf7b106c59
+    NPM_CONFIG_PRODUCTION: 'false'

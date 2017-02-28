@@ -1,0 +1,197 @@
+/*!
+ * Start Bootstrap - Shop Homepage HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+.text-center {
+    text-align: center;
+}
+
+.qabutton {
+    height: 38px !important;
+    width: 68px !important;
+    padding: 10px;
+    margin: 10px;
+}
+
+.thumbnail .productinfo {
+    min-height: 20px;
+    font-size: 10px!important;
+}
+
+.thumbnail .productinfo .label{
+    margin-left:1px;
+}
+
+.productinfo .label-info{
+    background-color:#003295!important;
+}
+
+.features {
+    min-height: 20px;
+    margin-left: 4px;
+}
+
+.features .label{
+	margin-left:2px;
+}
+
+.clear {
+    clear: both;
+}
+
+.attributes {
+    min-height: 20px;
+}
+
+.attributes p {
+    margin: 0px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+h5 {
+    color: #c8c8c8 !important
+}
+
+.caption {
+    overflow: hidden;
+}
+
+.thumbnail {
+    color: #333;
+    border-radius: 0px !important;
+    border: 1px solid #cccccc !important;
+    cursor:pointer;
+}
+
+.thumbnail .caption {
+    padding: 6px;
+    color: #333 !important;
+}
+
+.thumbnail .picture {
+    height: 115px;
+    width: 115px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: left;
+}
+
+.caption .price {
+    color: red !important;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.bs-component {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.bs-component .label {
+    font-size: 20px;
+    margin-right: 3px;
+}
+
+#slider_area{
+    position:absolute;
+    width:400px;
+    margin-left:-400px;
+    top:500px;
+}
+
+.sliderlabel{
+    margin-bottom:20px;
+}
+
+.sliders {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.rzslider{
+    margin:15px 0 10px 0!important;
+}
+
+
+.rzslider .rz-bar {
+    background: #d4750078 !important;
+}
+
+.rzslider .rz-bar.rz-selection {
+    background-color: #00aef2 !important;
+}
+
+.rzslider .rz-pointer:after {
+    background-color: #ffffff !important;
+}
+
+.rzslider .rz-pointer{
+    top:-5px!important;
+    width: 14px!important;
+    height: 14px!important;
+    background-color: #00aef2 !important;
+}
+
+
+.rzslider .rz-bubble {
+
+}
+
+
+/* custom css end */
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 100px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 0px !important;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    margin: 50px 0;
+}

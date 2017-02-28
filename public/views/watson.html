@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row">
+    	<div class="col-md-4">検索
+    		<div id="user_input_area">
+				<div id="user-input">
+                    <div>
+                        <form name="queryForm" class="form-inline" ng-submit="ask()">
+                            <div class="form-group">
+                        <input type="text" class="form-control" autofocus="autofocus" rows="1" id="questionText"
+                                  ng-keydown="handleKeydown($event)" ng-model="query"
+                                  placeholder="" row="2">
+                                <button href="#" role="button"
+                                   class="btn-question input-group-addon btn btn-default commonbtn"
+                                   ng-click="ask()" ng-disabled="queryForm.$invalid">
+                                    <span class="glyphicon glyphicon-send"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    	</div>
+    	
+    	<div class="col-md-8"　ng-show="show_products_view">
+	    	<div id="products_view_area" ng-controller="productsCtrl">
+	                <!--user_input_areaの上部に配置し、controllerをproductsCtrlとした場合は、sliderのvalueが取れなかった-->
+	                <!--デモとしてはここに配置-->
+	                <div id="slider_area">
+	                    <div class="col-md-10 sliders col-md-offset-1" id="sliders_col" ng-show="show_sliders">
+	                        <div ng-repeat="slider in sliders">
+	                            <div class="sliderlabel"><p>{{slider.label}}</p></div>
+	                            <rzslider
+	                                    rz-slider-model="slider.value"
+	                                    rz-slider-options="slider.options"></rzslider>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	                <div ng-click="showItemView(product)"
+	                     ng-repeat="product in products | sliderFilter:sliders">
+	                    <div class="thumbnail">
+	                        <img class="picture" src="/data/pict/{{product.id}}.jpg" alt="">
+	                        <div class="features">
+	                            <div ng-switch="product.type_eco == 'YES'" class="pull-left"><span
+	                                    class="label label-success" ng-switch-when="true">エコタイヤ</span></div>
+	                            <div ng-switch="product.type_comfort == 'YES'" class="pull-left"><span
+	                                    class="label label-primary" ng-switch-when="true">コンフォート</span></div>
+	                            <div ng-switch="product.type_sport == 'YES'" class="pull-left"><span
+	                                    class="label label-default" ng-switch-when="true">スポーツ</span></div>
+	                        </div>
+	
+	                        <div class="caption">
+	                            <div class="attributes">
+	                                <p class="pull-left">{{product.maker}}</p>
+	                            </div>
+	                            <div class="attributes">
+	                                <p class="pull-left">{{product.brand}}</p>
+	                            </div>
+	                            <div class="attributes">
+	                                <p class="pull-left">{{product.name}}</p>
+	                            </div>
+	                            <div class="attributes">
+	                                <p class="pull-left">{{product.tire_width + "/" + product.tire_oblatness +
+	                                    product.tire_radial +
+	                                    " " + product.roadindex + product.speedtype + " " + product.extraload }}</p>
+	                            </div>
+	                            <div class="productinfo">
+	                                <div class="pull-left"><span class="label label-info">お取寄せ</span></div>
+	                                <div class="pull-left"><span class="label label-warning">サマー</span></div>
+	                                <div ng-switch="product.recommend == 'YES'" class="pull-left"><span
+	                                        class="label label-danger" ng-switch-when="true">SALE！</span>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+    </div>
+</div>

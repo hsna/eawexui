@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ Watson Q&A Cartridge
+ Licensed Materials - Property of IBM
+ IPSC : 6949-62W
+ (C) Copyright IBM Japan, Ltd. 2016 All Rights Reserved.
+-->
+<web-ext xmlns="http://websphere.ibm.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://websphere.ibm.com/xml/ns/javaee http://websphere.ibm.com/xml/ns/javaee/ibm-web-ext_1_0.xsd"
+  version="1.0">
+
+  <reload-interval value="3" />
+  <context-root uri="/" />
+  <enable-directory-browsing value="false" />
+  <enable-file-serving value="true" />
+  <enable-reloading value="true" />
+  <enable-serving-servlets-by-class-name
+    value="false" />
+
+</web-ext>

@@ -1,0 +1,287 @@
+<div class="col-md-8"　ng-show="show_products_view">
+   	<div id="products_view_area" ng-controller="productsCtrl">
+               <!--user_input_areaの上部に配置し、controllerをproductsCtrlとした場合は、sliderのvalueが取れなかった-->
+           <!--デモとしてはここに配置-->
+           <div id="slider_area">
+               <div class="col-md-10 sliders col-md-offset-1" id="sliders_col" ng-show="show_sliders">
+                   <div ng-repeat="slider in sliders">
+                       <div class="sliderlabel"><p>{{slider.label}}</p></div>
+                       <rzslider
+                               rz-slider-model="slider.value"
+                               rz-slider-options="slider.options"></rzslider>
+                   </div>
+               </div>
+           </div>
+
+           <div class="col-sm-4 col-lg-4 col-md-4" ng-click="showItemView(product)"
+                ng-repeat="product in products | sliderFilter:sliders">
+               <div class="thumbnail">
+                   <img class="picture" src="/data/pict/{{product.id}}.jpg" alt="">
+                   <div class="features">
+                       <div ng-switch="product.type_eco == 'YES'" class="pull-left"><span
+                               class="label label-success" ng-switch-when="true">エコタイヤ</span></div>
+                       <div ng-switch="product.type_comfort == 'YES'" class="pull-left"><span
+                               class="label label-primary" ng-switch-when="true">コンフォート</span></div>
+                       <div ng-switch="product.type_sport == 'YES'" class="pull-left"><span
+                               class="label label-default" ng-switch-when="true">スポーツ</span></div>
+                   </div>
+
+                   <div class="caption">
+                       <div class="attributes">
+                           <p class="pull-left">{{product.maker}}</p>
+                       </div>
+                       <div class="attributes">
+                           <p class="pull-left">{{product.brand}}</p>
+                       </div>
+                       <div class="attributes">
+                           <p class="pull-left">{{product.name}}</p>
+                       </div>
+                       <div class="attributes">
+                           <p class="pull-left">{{product.tire_width + "/" + product.tire_oblatness +
+                               product.tire_radial +
+                               " " + product.roadindex + product.speedtype + " " + product.extraload }}</p>
+                       </div>
+                       <div class="productinfo">
+                           <div class="pull-left"><span class="label label-info">お取寄せ</span></div>
+                           <div class="pull-left"><span class="label label-warning">サマー</span></div>
+                           <div ng-switch="product.recommend == 'YES'" class="pull-left"><span
+                                   class="label label-danger" ng-switch-when="true">SALE！</span>
+                           </div>
+                       </div>
+                       <h5 class="price">1本価格&nbsp{{product.price}}円&nbsp(税込)</h5>
+
+                   </div>
+                   <!--review num <p class="pull-right">15 reviews</p>-->
+                   <!--<div class="ratings clear">
+                       <div ng-repeat="Star in [1,2,3,4,5]" class="pull-left">
+                           <div ng-switch="product.rate >= Star">
+                               <div ng-switch-when="true">
+                                   <span class="glyphicon glyphicon-star"></span>
+                               </div>
+                               <div ng-switch-when="false">
+                                   <span class="glyphicon glyphicon-star-empty"></span>
+                               </div>
+                           </div>
+                       </div>
+                   </div>-->
+               </div>
+           </div>
+       </div>
+      </div>
+  <div class="col-md-8" ng-show="show_item_view">
+      <div id="item_view_area" ng-controller="itemCtrl">
+          <div class="bootstrap-dialog-header">
+              <div class="bootstrap-dialog-close-button" style="display: block;">
+                  <button class="close" ng-click="cancel()">×</button>
+              </div>
+          </div>
+
+          <div class="thumbnail">
+              <div class="row">
+                  <div class="col-md-5 col-md-offset-1">
+                      <img class="img-responsive" src="/data/pict/{{selectedProduct.id}}.jpg" alt="">
+                  </div>
+                  <div class="col-md-5">
+                      <div class="caption-full">
+                          <div class="item_title">
+                              <h4 class="pull-left">タイヤスペック</h4>
+                          </div>
+
+                          <div class="features">
+                              <div ng-switch="selectedProduct.type_eco == 'YES'" class="pull-left"><span
+                                      class="label label-success" ng-switch-when="true">エコタイヤ</span></div>
+                              <div ng-switch="selectedProduct.type_comfort == 'YES'" class="pull-left"><span
+                                      class="label label-primary" ng-switch-when="true">コンフォート</span></div>
+                              <div ng-switch="selectedProduct.type_sport == 'YES'" class="pull-left"><span
+                                      class="label label-default" ng-switch-when="true">スポーツ</span></div>
+                          </div>
+
+                          <div class="item_base_info">
+                              <div class="attributes">
+                                  <p class="pull-left">{{selectedProduct.maker}}</p>
+                              </div>
+                              <div class="attributes">
+                                  <p class="pull-left">{{selectedProduct.brand}}</p>
+                              </div>
+                              <div class="attributes">
+                                  <p class="pull-left">{{selectedProduct.name}}</p>
+                              </div>
+                              <div class="attributes">
+                                  <p class="pull-left">{{selectedProduct.tire_width + "/" +
+                                      selectedProduct.tire_oblatness
+                                      +
+                                      selectedProduct.tire_radial +
+                                      " " + selectedProduct.roadindex + selectedProduct.speedtype + " " +
+                                      selectedProduct.extraload }}</p>
+                              </div>
+
+                              <div class="productinfo">
+                                  <div class="pull-left"><span class="label label-info">お取寄せ</span></div>
+                                  <div class="pull-left"><span class="label label-warning">サマー</span></div>
+                                  <div ng-switch="product.recommend == 'YES'" class="pull-left"><span
+                                          class="label label-danger" ng-switch-when="true">SALE！</span>
+                                  </div>
+                              </div>
+
+                              <div class="ecotiretable">
+                                  <div ng-switch="selectedProduct.type_eco == 'YES'">
+                                      <table class="table" ng-switch-when="true">
+                                          <thead>
+                                          <tr>
+                                              <th colspan="2">エコタイヤ性能</th>
+                                          </tr>
+                                          </thead>
+                                          <tbody>
+                                          <tr>
+                                              <td>転がり抵抗係数</td>
+                                              <td>{{selectedProduct.rrc}}</td>
+                                          </tr>
+                                          <tr>
+                                              <td>ウエットグリップ性能</td>
+                                              <td>{{selectedProduct.wet_grip}}</td>
+                                          </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row item_points">
+                  <div class="col-md-5 col-md-offset-1">
+                      <h4>商品の特徴</h4>
+                      <div ng-switch="selectedProduct.p_comfort >= 6">
+                          <div ng-switch-when="true" class="pull-left">
+                              <div class="pointicon">
+                                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                                  <div ng-switch="selectedProduct.p_comfort >= 8">
+                                      <div ng-switch-when="true">
+                                          <p>最高級の<br/>乗り心地</p>
+                                      </div>
+                                      <div ng-switch-when="false">
+                                          <p>快適な<br/>乗り心地</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div ng-switch="selectedProduct.p_quiet >= 6">
+                          <div ng-switch-when="true" class="pull-left">
+                              <div class="pointicon">
+                                  <span class="glyphicon glyphicon-headphones"></span>
+                                  <p>高い<br/>静粛性</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div ng-switch="selectedProduct.p_fuel >= 6">
+                          <div ng-switch-when="true" class="pull-left">
+                              <div class="pointicon">
+                                  <span class="glyphicon glyphicon-leaf"></span>
+                                  <div ng-switch="selectedProduct.p_fuel >= 8">
+                                      <div ng-switch-when="true">
+                                          <p>最高ランク<br/>の低燃費</p>
+                                      </div>
+                                      <div ng-switch-when="false">
+                                          <p>低燃費</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div ng-switch="selectedProduct.p_life >= 6">
+                              <div ng-switch-when="true" class="pull-left">
+                                  <div class="pointicon">
+                                      <span class="glyphicon glyphicon-object-align-left"></span>
+                                      <p>ロング<br/>ライフ</p>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+                  <div class="col-md-5 personal_points">
+                      <h4>あなたへおすすめするポイント</h4>
+                      <div ng-switch="selectedProduct.p_comfort >= 6">
+                          <div ng-switch-when="true" class="pull-left">
+                              <div class="pointicon">
+                                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                                  <div ng-switch="selectedProduct.p_comfort >= 8">
+                                      <div ng-switch-when="true">
+                                          <p>最高級の<br/>乗り心地</p>
+                                      </div>
+                                      <div ng-switch-when="false">
+                                          <p>快適な<br/>乗り心地</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div ng-switch="selectedProduct.p_fuel >= 6">
+                              <div ng-switch-when="true" class="pull-left">
+                                  <div class="pointicon">
+                                      <span class="glyphicon glyphicon-leaf"></span>
+                                      <div ng-switch="selectedProduct.p_fuel >= 8">
+                                          <div ng-switch-when="true">
+                                              <p>最高ランク<br/>の低燃費</p>
+                                          </div>
+                                          <div ng-switch-when="false">
+                                              <p>低燃費</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row price_detail">
+                      <div class="col-md-6 col-md-offset-5">
+                          <table rules="cols" class="table">
+                              <tbody>
+                              <tr>
+                                  <td>タイヤセット金額(4本セット)</td>
+                                  <td class="price"><p>{{selectedProduct.price *4}}円</p></td>
+                              </tr>
+                              <tr>
+                                  <td>【店舗】工賃（組込・バランス作業）</td>
+                                  <td valign="middle" rowspan="2" class="price"><p class="top-15">4320円</p>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>【宅配】梱包費用<br/>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                          <p>★ゴムバルブ交換・タイヤ処分をご希望のお客様は、別途料金が発生します</p>
+                      </div>
+                  </div>
+                  <div class="row price_summary">
+                      <div class="col-md-10 col-md-offset-1">
+                          <table class="table">
+                              <tbody>
+                              <tr>
+                                  <td></td>
+                                  <td>
+                                      <div class="pull-left">商品合計金額</div>
+                                      <div class="price pull-right">{{selectedProduct.price *4 +
+                                          4320}}円(税込み)
+                                      </div>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                          <button type="submit" class="btn btn-success pull-right cartbutton pull-right"
+                                  ng-click="addCart()">
+                              このセットをカートに入れる
+                          </button>
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+  </div>

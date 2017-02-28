@@ -1,0 +1,161 @@
+/*!
+ * Start Bootstrap - Shop Item HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+#item_view_area{
+    animation-duration: 0.2s;
+    animation-name: slidein;
+}
+
+@keyframes slidein{
+    from{
+        margin-left: 100%;
+    }
+
+    to{
+        margin-left: 0%
+    }
+}
+
+#item_view_area .img-responsive{
+    margin-top:20px;
+}
+
+.item_title{
+    width:100%;
+    min-height:40px;
+    margin-top:10px;
+}
+
+.item_title h4{
+    font-size:24px;
+}
+
+#item_view_area .features{
+    margin-bottom:10px;
+    margin-left:0px;
+    margin-top:5px;
+}
+
+#item_view_area .features .label{
+    font-size:16px;
+}
+
+.item_base_info{
+    width:100%;
+    min-width:250px;
+}
+
+.item_base_info .attributes{
+    font-size:18px;
+    margin-bottom:5px;
+}
+
+.item_base_info .productinfo{
+    font-size:18px;
+    margin-left:-5px;
+    margin-bottom:10px;
+}
+
+.ecotiretable .table{
+    border-style:solid ;
+    border-color: #cccccc;
+    border-width:1px;
+
+}
+
+.item_points{
+    margin-top:15px;
+}
+
+.item_points h4{
+    text-align:left;
+    margin:20px;
+}
+
+.item_points .pointicon{
+    text-align:center;
+    margin-left:10px;
+    width:60px;
+}
+
+.item_points .glyphicon{
+    font-size:24px;
+}
+
+.item_points .pointicon p{
+    font-size:10px;
+}
+
+.item_points .personal_points{
+    margin-left:-10px;
+}
+
+.item_points .personal_points .glyphicon{
+    color:#00aef2;
+}
+
+.price_detail table{
+    font-size:12px;
+    border-style:solid;
+    border-width:2px;
+    border-color:#ccc;
+    margin-bottom:0px;
+    margin-top:5px;
+}
+
+.top-15{
+    margin-top:15px;
+}
+
+.price_detail table tr td p{
+    font-size:12px;
+}
+
+.price_detail p{
+    font-size:6px;
+}
+
+.price_summary{
+    font-size:20px;
+}
+
+.price{
+    color:red;
+}
+.caption-full table{
+    color:#333;
+}
+
+.caption-full{
+    height:220px;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.cartbutton {
+    margin-bottom:15px;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    margin: 50px 0;
+}
