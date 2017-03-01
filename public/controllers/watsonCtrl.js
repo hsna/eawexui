@@ -1,19 +1,16 @@
 'use strict';
 // Dependencies
 angular.module('myApp')
-    .controller('watsonCtrl', ['$rootScope', '$sce', '$scope', '$log', '$filter', '$location','backendService','sotaService',
-        function ($rootScope, $sce, $scope, $log, $filter, $location, backendService, sotaService) {
+    .controller('watsonCtrl', ['$rootScope', '$sce', '$scope', '$log', '$filter', '$location','backendService',
+        function ($rootScope, $sce, $scope, $log, $filter, $location, backendService) {
             $scope.features = [];
             $scope.waitingForWatsonAnswer = false;
             $scope.answer = "";
             $scope.response = "";
             $scope.query = "";//チャットボックス上に表示する文字列
-            $scope.candidates = [];
             $scope.str = "";
             $scope.think = new Array();
             $scope.showsliderflg = "";
-            $scope.sota_key = "sota_message";
-            $scope.sota_message = "";
             var errorMsg = "サーバーエラーが発生しました";
             $scope.$on('event:errorCommunicateToWatson', function (event, err) {
                 //エラーメッセージ
@@ -54,15 +51,6 @@ angular.module('myApp')
                 )
             }
 
-            $scope.moveSota = function(answer) {
-                console.log(answer);
-                var sota_message = $scope.getContextValue($scope.sota_key, answer);
-                $scope.sota_message = sota_message;
-                sotaService.order($scope.sota_message).then(function(res) {
-                    if(res) console.log(res.message);
-                });
-            }
-
             // watsonからの応答を画面表示用に処理する関数
             $scope.displayAnswer = function(answer){
                 console.log("watsonAnswered");
@@ -73,11 +61,6 @@ angular.module('myApp')
                     return;
                     $scope.changeMode("showNormalWatson");
                 } else {
-                    //候補表示対応
-                    //candidates に候補の文字列の配列をセットする
-                    var candidates = $scope.getContextValue("choices", answer);
-                    $scope.candidates = candidates;
-                    //console.log(candidates);
                     //message にメッセージ本文をセットする
                     var message = "";
                     angular.forEach(answer["output"]["text"],function(text,index){
@@ -85,20 +68,13 @@ angular.module('myApp')
                     });
                     //console.log(message);
                         //画面モード変更対応
-                    var mode_key = "changedisplay";
+ /*                   var mode_key = "changedisplay";
                     var mode = $scope.getContextValue(mode_key, answer).toString();
                     if (mode.length != 0) {
                         $scope.changeMode(mode, answer);
                     }
-					//sota対応
-					var mode_key = "sota_message";
-					var mode = $scope.getContextValue(mode_key, answer);
-					if(mode){
-					$scope.moveSota(answer);
-					}
-					
-					
-                    //表示商品の変更対応
+	*/				
+  /*                  //表示商品の変更対応
                     var feature_key = "changefeature";
                     var feature = $scope.getContextValue(feature_key, answer);
                     if (feature !== undefined) {
@@ -123,7 +99,7 @@ angular.module('myApp')
                         //productコントロール側で表示する商品を変更
                         $rootScope.$broadcast('event:requestChangeFeature', feature);
                     }
-                    // TODO: typeWriter関数の外出し
+   */                 // TODO: typeWriter関数の外出し
                     //watsonのセリフを1文字ずつ表示させる
                     var length = message.length;
                     var text = message;
@@ -140,15 +116,6 @@ angular.module('myApp')
                             }
                         }, 5);
                     }());
-                    var placeholder = " ";
-                    if (candidates.length != 0) {
-                        angular.forEach(candidates, function (value, index) {
-                            placeholder = placeholder + value + "/";
-                        })
-                        $scope.examples = placeholder.substr(0, placeholder.length - 1);
-                    } else {
-                        $scope.examples = "ご質問は?";
-                    }
                     //add end
                     $scope.response = $sce.trustAsHtml(message);
                     $scope.changeMode("showNormalWatson");
@@ -157,31 +124,6 @@ angular.module('myApp')
                 $scope.waitingForWatsonAnswer = false
                 $scope.query = null;
         }
-            //'例'のアニメーション表示対応
-            $scope.ticker = function () {
-                var choices = $scope.candidates;
-                var length = choices.length;
-                var index = 0;
-                if ($scope.tid1 != "") {
-                    clearTimeout($scope.tid1);
-                }
-                if ($scope.tid2 != "") {
-                    clearTimeout($scope.tid2);
-                }
-                var process = function () {
-                    if (index < length) {
-                        $scope.str = choices[index];
-                        index++;
-                        $scope.tid1 = setTimeout(process, 2000);
-                        $scope.$apply();
-                    } else {
-                        index = 0;
-                        $scope.tid2 = setTimeout(process, 2000);
-                    }
-                };
-                process();
-            }
-
             $scope.say = function (question) {
                 $scope.query = question;
                 $scope.ask();
