@@ -119,7 +119,6 @@ angular.module('myApp')
                     //add end
                     $scope.response = $sce.trustAsHtml(message);
                     $scope.changeMode("showNormalWatson");
-                    $scope.ticker();
                 }
                 $scope.waitingForWatsonAnswer = false
                 $scope.query = null;
@@ -205,7 +204,6 @@ angular.module('myApp')
                         $scope.show_products_view = true;
                         $scope.show_sliders = false;
                         $scope.show_item_view = false;
-//                      $scope.moveSota(answer);
                         break;
                     case 'showProductsViewAndSliders':
                         //スライダーの表示フラグをtrueにセット
