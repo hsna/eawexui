@@ -40,8 +40,13 @@ angular.module('myApp')
 				//検索ボックスに入力された内容を取得
                 $scope.ask = function(){
 					var str = $scope.query;
-					$scope.keywords = Keywords.getKeywords(str);
-					console.log($scope.keywords)
+					Keywords.getKeywords(str)
+						.then(
+								function(response){
+									console.log(response);
+									$scope.keywords = response;
+								}
+								)
 				}
             }
             // 商品がカートに追加されたときのwatsonserviceの呼出の関数

@@ -20,7 +20,6 @@ angular.module('myApp')
                 });
                 return request.then(_onSuccess, _onError);
             }
-
             return {
                 getKeywords: _getKeywords
         };
