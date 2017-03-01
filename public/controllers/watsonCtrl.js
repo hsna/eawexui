@@ -1,8 +1,10 @@
 'use strict';
 // Dependencies
 angular.module('myApp')
-    .controller('watsonCtrl', ['$rootScope', '$sce', '$scope', '$log', '$filter', '$location','backendService',
-        function ($rootScope, $sce, $scope, $log, $filter, $location, backendService) {
+    .controller('watsonCtrl', ['$rootScope', '$sce', '$scope', 
+                               '$log', '$filter', '$location','backendService', 'Keywords',
+        function ($rootScope, $sce, $scope, $log, $filter,
+				  $location, backendService, Keywords) {
             $scope.features = [];
             $scope.waitingForWatsonAnswer = false;
             $scope.answer = "";
@@ -11,6 +13,7 @@ angular.module('myApp')
             $scope.str = "";
             $scope.think = new Array();
             $scope.showsliderflg = "";
+			$scope.keywords = [];
             var errorMsg = "サーバーエラーが発生しました";
             $scope.$on('event:errorCommunicateToWatson', function (event, err) {
                 //エラーメッセージ
@@ -34,11 +37,69 @@ angular.module('myApp')
                 });
                 //全角->半角とする End
                 $scope.waitingForWatsonAnswer = true;
-                backendService.ask(question).then(
+				//検索ボックスに入力された内容を取得
+                $scope.ask = function(){
+					var str = $scope.query;
+					$scope.keywords = Keywords.getKeywords(str);
+					console.log($scope.keywords)
+				}
+            }
+            // 商品がカートに追加されたときのwatsonserviceの呼出の関数
+            $scope.addcart = function (product) {
+                $scope.changeMode("showThinkWatson");
+                $scope.waitingForWatsonAnswer = true;
+                backendService.addcart(product).then(
                         function (answer){
                             $scope.displayAnswer(answer)
                         }
                 )
+            }
+
+            // watsonからの応答を画面表示用に処理する関数
+            $scope.displayAnswer = function(answer){
+                console.log("watsonAnswered");
+                if (answer.status === "Error") {
+                    $rootScope.$broadcast('event:errorCommunicateToWatson', errorMsg);
+                    console.log("Received an error");
+                    $scope.response = errorMsg;
+                    return;
+                    $scope.changeMode("showNormalWatson");
+                } else {
+                        //画面モード変更対応
+                    var mode_key = "changedisplay";
+                    var mode = $scope.getContextValue(mode_key, answer).toString();
+                    if (mode.length != 0) {
+                        $scope.changeMode(mode, answer);
+                    }
+					
+                    //表示商品の変更対応
+                    var feature_key = "changefeature";
+                    var feature = $scope.getContextValue(feature_key, answer);
+                    if (feature !== undefined) {
+                        //Thinkアイコン表示対応
+                        var tempproducts = new Array;
+                        angular.forEach(feature, function (value, key) {
+                            $scope.think = new Array();
+                            if (value === "type_comfort") {
+                                $scope.think.push("confort_strong");
+                            } else if (value === "type_eco") {
+                                $scope.think.push("eco_strong");
+                            } else if (value === "type_sport") {
+                                $scope.think.push("run_strong");
+                            } else if (value === "eco_confort") {
+                                $scope.think.push("eco_weak");
+                                $scope.think.push("confort_weak");
+                            } else if (value === "eco_eco_confort") {
+                                $scope.think.push("eco_strong");
+                                $scope.think.push("confort_weak");
+                            }
+                        });
+                        //productコントロール側で表示する商品を変更
+                        $rootScope.$broadcast('event:requestChangeFeature', feature);
+                    }
+                }
+                $scope.waitingForWatsonAnswer = false
+                $scope.query = null;
             }
             // 商品がカートに追加されたときのwatsonserviceの呼出の関数
             $scope.addcart = function (product) {

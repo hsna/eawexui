@@ -1,6 +1,9 @@
 angular.module('myApp')
-    .controller('productsCtrl', ['$rootScope', '$scope', '$uibModal', '$filter', '$log', '$location', 'Products', 'labelConf', 'unitConf', 'Item',
-        function ($rootScope, $scope, $uibModal, $filter, $log, $location, Products, labelConf, unitConf, Item) {
+    .controller('productsCtrl', ['$rootScope', '$scope', '$uibModal', 
+                                 '$filter', '$log', '$location', 'Products', 
+                                 'labelConf', 'unitConf', 'Item',
+        function ($rootScope, $scope, $uibModal, $filter, $log, $location, 
+        		  Products, labelConf, unitConf, Item) {
 
             //モデル
             $scope.products = {};//一覧に表示する商品
@@ -8,7 +11,7 @@ angular.module('myApp')
             $scope.tempSliderParam = {};//スライダーに使うパラメーター
 
 
-            //カテゴリ
+            //カテゴリ(jsonの指定)
             var category = "summertire";
 
             //特徴、デモの初期値はコンフォートタイヤ
@@ -57,6 +60,7 @@ angular.module('myApp')
                                             if( item.p_comfort >= 5 && item.p_fuel >= 4 ) tempproducts.push(item);
                                         });
                                         products = tempproducts;
+                                        console.log("products"+products);
                                     } else if (value === "eco_eco_confort"){
                                         angular.forEach(products, function(item) {
                                             if( item.p_comfort >= 6 && item.type_eco === "YES" ) tempproducts.push(item);

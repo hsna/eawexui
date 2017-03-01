@@ -10,36 +10,6 @@ angular.module('myApp')
 
 	var service = {
 		ask: function(question){
-			console.log("question", question);
-
-			var payloadToWatson = {};
-		    if (question) {
-		        payloadToWatson.input = {
-		          text: question
-		        };
-		      }
-		      if (context) {
-			   if (context.sota_message){
-				delete context.sota_message;
-			   }
-		        payloadToWatson.context = context;
-		      }
-
-
-			var promise =  $http.post(messageEndpoint, payloadToWatson).then(
-				function(res){
-					console.log('got response', res);
-					context = res.data["context"];
-					return res.data;
-				},function(errRes){
-					console.log("got error")
-					if (typeof errRes !== 'undefined') {
-						return errRes.data;
-					}
-				}
-			);
-
-			return promise;
 		},
 
 		addcart: function (product){

@@ -19,6 +19,16 @@
                     </div>
                 </div>
             </div>
+            <div ng-show="query">
+	            <section>
+				    <ul class="keywordlist">
+				      <li ng-repeat="keyword in keywords">
+				        <input type="checkbox" ng-checked="file.checkFlug" ng-click="file.checkFlug = !file.checkFlug" id="">
+				        <label for="">{{keyword.text}}</label>
+				      </li>
+				    </ul>
+				  </section>
+			</div>
     	</div>
     	
     	<div class="col-md-8"　ng-show="show_products_view">
@@ -52,7 +62,7 @@
 	                                <p class="pull-left">{{product.maker}}</p>
 	                            </div>
 	                            <div class="attributes">
-	                                <p class="pull-left">{{product.brand}}</p>
+	                                <p class="pull-left">{{product.id}}</p>
 	                            </div>
 	                            <div class="attributes">
 	                                <p class="pull-left">{{product.name}}</p>
