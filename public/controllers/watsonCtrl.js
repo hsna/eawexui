@@ -38,7 +38,7 @@ angular.module('myApp')
                 //全角->半角とする End
                 $scope.waitingForWatsonAnswer = true;
 				//検索ボックスに入力された内容を取得
-                $scope.ask = function(){
+                $scope.askKeyword = function(){
 					var str = $scope.query;
 					Keywords.getKeywords(str)
 						.then(
