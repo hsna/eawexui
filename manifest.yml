@@ -2,13 +2,7 @@ applications:
 - path: .
   memory: 256M
   instances: 1
-  domain: mybluemix.net
-  name: cogcommerce-cnvs
-  host: cogcommerce-cnvs-renshu
-  disk_quota: 1024M
-  services:
-  - Conversation-t2
-  env:
-    WORKSPACE_ID: 38d5b50d-d152-4548-a00d-c08ba4606792
-    NPM_CONFIG_PRODUCTION: 'false'
+  domain: eu-gb.mybluemix.net
+  name: test-ui
+  host: test-ui
     
