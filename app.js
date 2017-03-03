@@ -51,7 +51,7 @@ var app = express();
 var basic = auth.basic({
   realm: 'please login'
 }, function(username, password, callback) {
-  callback(username == 'coguser' && password == 'watson!');
+  callback(username == 'test' && password == 'test');
 });
 
 // Bootstrap application settings
